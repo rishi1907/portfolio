@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hand-ink: 'Brush Script MT', 'Segoe Script', cursive;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg-900 text-gray-100 antialiased;
+  }
+}
+
+.handwritten {
+  font-family: var(--hand-ink);
+  letter-spacing: .6px;
+}
+
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  @apply rounded-lg2 p-6 shadow-soft;
+}
+
+.fade-up {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all .6s ease-out;
+}
+.fade-up.in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  transition: transform .25s ease;
 }
